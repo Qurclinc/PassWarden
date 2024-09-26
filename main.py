@@ -1,13 +1,12 @@
-from Crypto.Cipher import AES
-import base64
+from Services.Crypter import Crypter
 
-key = "XUELlx8+ZgVXU5VI"
-cipher = AES.new(key.encode("utf-8"), AES.MODE_EAX)
+crypter = Crypter()
+key = "S0m3H4rdLin3"
+# data = "Соси хуй чурка"
+# res = crypter.encrypt(key, data)
 
-nonce = cipher.nonce
+encrypted_data = "KHAd0RvwidmZcxLF:03AI03B0dNyXaEL5JRKvPLAs5ADCB2SEIFmPBgJbXORPUvldurZoeRVCkGVPSlHs"
 
-data = "соси хуй чурка"
+res = crypter.decrypt(key, encrypted_data)
 
-ciphertext, tag = cipher.encrypt_and_digest(data.encode("utf-8"))
-text = base64.b64encode(ciphertext)
-print(text)
+print(res)
