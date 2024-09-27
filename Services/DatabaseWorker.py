@@ -1,6 +1,7 @@
 import sqlite3 as sql
 from Services.Fileworker import processing
 import bcrypt
+from Services.Crypter import Crypter
 
 def init_tables():
     if processing("first_run", "false") == "true":
@@ -13,9 +14,10 @@ password text NOT NULL
 );""")
             cur.execute("""CREATE TABLE IF NOT EXISTS passwords(
 id integer PRIMARY KEY AUTOINCREMENT,
-owner text NOT NULL,
+owner_id integer NOT NULL,
 service text NOT NULL,
-password text NOT NULL
+password text NOT NULL,
+FOREIGN KEY (owner_id) REFERENCES users (id)
 );""")
             conn.commit()
 
@@ -28,6 +30,17 @@ class Database:
 
     def get_key(self):
         if self.__key: return self.__key
+
+    def get_user(self, id):
+        try:
+            with sql.connect(self.route) as conn:
+                cur = conn.cursor()
+                cur.execute("""SELECT * FROM users WHERE id=?""", (id,))
+                res = cur.fetchone()
+                if res: return res
+                return []
+        except Exception as ex:
+            return str(ex)
 
     def register(self, login, password):
         try:
@@ -56,7 +69,37 @@ class Database:
                 if hash == db_passwd:
                     cur.execute("""SELECT * FROM users WHERE login=?""", (login,))
                     self.__key = password
-                    res = cur.fetchall()
+                    res = cur.fetchall()[0]
                     if res: return res
+        except TypeError:
+            return "You aren't authorized"
         except Exception as ex:
             return str(ex)
+
+        
+    def add_password(self, id, service, password):
+        crypter = Crypter()
+        try:
+            if self.__key:
+                hashed_password = crypter.encrypt(self.__key, password)
+            else:
+                raise BaseException("Unauthorized")
+        except Exception as ex:
+            return str(ex)
+        try:
+            with sql.connect(self.route) as conn:
+                cur = conn.cursor()
+                cur.execute("""INSERT INTO passwords (owner_id, service, password) VALUES (?, ?, ?)""", (id, service, hashed_password))
+                conn.commit()
+        except Exception as ex:
+            return str(ex)
+        
+    def get_password(self, id, service):
+        try:
+            with sql.connect(self.route) as conn:
+                cur = conn.cursor()
+                cur.execute("""SELECT * FROM users WHERE id=? AND service=?""", (id, service))
+                res = cur.fetchall()
+                print(res)
+        except Exception as ex:
+            print(str(ex))

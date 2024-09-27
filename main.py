@@ -1,35 +1,39 @@
-# from Services.Crypter import Crypter
+from Services.Crypter import Crypter
 
-# crypter = Crypter()
-# key = "S0m3H4rdLin3"
-# # data = "Соси хуй чурка"
-# # res = crypter.encrypt(key, data)
+crypter = Crypter()
+key = "S0m3H4rdLin3"
+data = "Соси хуй чурка"
+# res = crypter.encrypt(key, data)
 
-# encrypted_data = "KHAd0RvwidmZcxLF:03AI03B0dNyXaEL5JRKvPLAs5ADCB2SEIFmPBgJbXORPUvldurZoeRVCkGVPSlHs"
 
-# res = crypter.decrypt(key, encrypted_data)
+encrypted_data = "3uJI1nkzjU+23G6C:EOWGbQ2VmGiRFHZg/sberwofJRK5xnoI1XgWQEAmReI="
 
-# print(res)
+res = crypter.decrypt(key, encrypted_data)
 
-from Services.Fileworker import processing
-from Services.DatabaseWorker import init_tables, Database
-import bcrypt
+print(res)
 
-# line = "p4$$w0rd"
-# salt = bcrypt.gensalt(16)
-# hash = bcrypt.hashpw(line.encode("utf-8"), salt)
-# print(salt, hash, sep="\n")
-# print("\n\n\n")
+# from Services.Fileworker import processing
+# from Services.DatabaseWorker import init_tables, Database
+# from Services.User import User
+# import bcrypt
 
-# newsalt = hash.decode("utf-8")[:29].encode("utf-8")
-# d_line = input()
-# d_hash = bcrypt.hashpw(d_line.encode("utf-8"), newsalt)
-# print(newsalt, d_hash, sep="\n")
-init_tables()
+# # line = "p4$$w0rd"
+# # salt = bcrypt.gensalt(16)
+# # hash = bcrypt.hashpw(line.encode("utf-8"), salt)
+# # print(salt, hash, sep="\n")
+# # print("\n\n\n")
 
-db = Database()
+# # newsalt = hash.decode("utf-8")[:29].encode("utf-8")
+# # d_line = input()
+# # d_hash = bcrypt.hashpw(d_line.encode("utf-8"), newsalt)
+# # print(newsalt, d_hash, sep="\n")
+# init_tables()
 
-# print(db.register("Bill", "N0P4$$w0rd"))
-data = db.authenticate("Bill", "N0P4$$w0rd")
-print(data)
-print(db.get_key())
+# db = Database()
+
+# # print(db.register("Peter", "Wiener"))
+# # print(db.register("Bill", "N0P4$$w0rd"))
+# data = db.authenticate("Bill", "N0P4$$w0rd")
+# user = User(data[0], data[1])
+# # data = db.authenticate("Peter", "Wiener")
+# user.add_password(db, "Менеджер паролей", "N0P4$$w0rd")
