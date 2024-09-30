@@ -98,8 +98,23 @@ class Database:
         try:
             with sql.connect(self.route) as conn:
                 cur = conn.cursor()
-                cur.execute("""SELECT * FROM users WHERE id=? AND service=?""", (id, service))
-                res = cur.fetchall()
-                print(res)
+                cur.execute("""SELECT * FROM passwords WHERE owner_id=? AND service=?""", (id, service))
+                res = cur.fetchone()
+                print(res[3])
+                if res:
+                    crypter = Crypter()
+                    return crypter.decrypt(self.__key, res[3])
         except Exception as ex:
             print(str(ex))
+        return None
+    
+    def get_passwords_list(self, id):
+        try:
+            with sql.connect(self.route) as conn:
+                cur = conn.cursor()
+                cur.execute("""SELECT * FROM passwords WHERE owner_id=?""", (id,))
+                res = cur.fetchall()
+                if res: return res
+        except Exception as ex:
+            return ["Execption"]
+        return ["None"]

@@ -14,5 +14,8 @@ class User:
         db.add_password(self.get_id(), service, password)
 
     def get_password(self, db, service):
-        db.get_password(self.get_id(), service)
+        return db.get_password(self.get_id(), service)
+    
+    def get_passwords_list(self, db):
+        return db.get_passwords_list(self.id)
 

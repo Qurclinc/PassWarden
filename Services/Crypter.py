@@ -26,7 +26,7 @@ class Crypter:
         iv = base64.b64encode(Random.get_random_bytes(self.MAX_LENGTH)) # Salt for ecnryption
         encrypter = AES.new(key, self.mode, iv=iv)
         encrypted_data = base64.b64encode(encrypter.encrypt(pad(data.encode("utf-8"), self.BLOCK_SIZE)))
-        result = f"{iv.decode("utf-8")}:{encrypted_data.decode("utf-8")}" # forms string that contains salt:data in base64
+        result = f"{iv.decode('utf-8')}:{encrypted_data.decode('utf-8')}"
         return result
 
     def decrypt(self, key: str, encoded_data: str):
@@ -36,8 +36,5 @@ class Crypter:
         iv = iv.encode("utf-8")
         data = base64.b64decode(data)
         decrypter = AES.new(key, self.mode, iv) 
-        result = unpad(decrypter.decrypt(data), self.BLOCK_SIZE)
-        print(result)
-        # decrypter = AES.new(key, self.mode, iv=iv.encode("utf-8"))
-        # result = base64.b64decode(unpad(decrypter.decrypt(base64.b64decode(data)), self.BLOCK_SIZE)).decode("utf-8")
-        # return result
+        result = unpad(decrypter.decrypt(data), self.BLOCK_SIZE).decode("utf-8")
+        return result
