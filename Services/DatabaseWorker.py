@@ -76,6 +76,7 @@ class Database:
             return "You aren't authorized"
         except Exception as ex:
             return str(ex)
+        return False
 
         
     def add_password(self, id, service, password):

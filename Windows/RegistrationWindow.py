@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QStyle, QApplication
 from src.Register import Ui_RegisterWindow
 from .CriticalWindow import CriticalWindow
+from .SuccessWindow import SuccessWindow
 
 from Services.Security import validate_password
 
@@ -25,8 +26,8 @@ class RegisterWindow(QMainWindow):
             res = validate_password(passwd)
             if res[0]:
                 if (self.db.register(login, passwd)):
-                    error_win = CriticalWindow("УСПЕХ", "УСПЕХ")
-                    error_win.exec_()
+                    success_win = SuccessWindow("Успешная регистрация", "Регистрация прошла успешно. Теперь можно произвести вход в созданный аккаунт")
+                    success_win.exec_()
                 else:
                     error_win = CriticalWindow("Ошибка регистрации", "Имя пользователя уже занято").exec_()
             else:
