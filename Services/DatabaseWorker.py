@@ -54,9 +54,10 @@ class Database:
                     cur.execute("""INSERT INTO users(login, password) VALUES (?, ?)""", (login, hash))
                     conn.commit()
                     return True
-                return False
         except sql.Error as ex:
+            print(str(ex))
             return str(ex)
+        return False
 
     def authenticate(self, login, password):
         try:

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>642</width>
+    <width>640</width>
     <height>480</height>
    </rect>
   </property>
@@ -133,6 +133,45 @@ QPushButton:hover {
         </widget>
        </item>
       </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalWidget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>410</y>
+      <width>111</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <widget class="QLabel" name="credits">
+       <property name="styleSheet">
+        <string notr="true">font: italic 10pt &quot;Droid Sans Fallback&quot;;</string>
+       </property>
+       <property name="text">
+        <string>v. 0.0.1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="styleSheet">
+        <string notr="true">font: italic 10pt &quot;Droid Sans Fallback&quot;;
+</string>
+       </property>
+       <property name="text">
+        <string>made by CXDER</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>

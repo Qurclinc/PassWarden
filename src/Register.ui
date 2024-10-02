@@ -52,7 +52,7 @@ color: rgb(255, 255, 255);</string>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="login_line">
          <property name="styleSheet">
           <string notr="true">border:none;
 background-color: rgb(70, 113, 213);</string>
@@ -67,7 +67,7 @@ background-color: rgb(70, 113, 213);</string>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="passwd_line">
          <property name="styleSheet">
           <string notr="true">border:none;
 background-color: rgb(70, 113, 213);
@@ -83,7 +83,7 @@ background-color: rgb(70, 113, 213);
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_3">
+        <widget class="QLineEdit" name="passwd2_line">
          <property name="styleSheet">
           <string notr="true">border:none;
 background-color: rgb(70, 113, 213);</string>
@@ -127,6 +127,45 @@ QPushButton:hover {
         </layout>
        </item>
       </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalWidget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>410</y>
+      <width>111</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <widget class="QLabel" name="credits">
+       <property name="styleSheet">
+        <string notr="true">font: italic 10pt &quot;Droid Sans Fallback&quot;;</string>
+       </property>
+       <property name="text">
+        <string>v. 0.0.1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="styleSheet">
+        <string notr="true">font: italic 10pt &quot;Droid Sans Fallback&quot;;
+</string>
+       </property>
+       <property name="text">
+        <string>made by CXDER</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>

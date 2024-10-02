@@ -84,6 +84,23 @@ class Ui_LoginWindow(object):
         self.log_in_btn.setObjectName("log_in_btn")
         self.horizontalLayout.addWidget(self.log_in_btn)
         self.verticalLayout.addLayout(self.horizontalLayout)
+        self.verticalWidget_2 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalWidget_2.setGeometry(QtCore.QRect(520, 410, 111, 54))
+        self.verticalWidget_2.setObjectName("verticalWidget_2")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.verticalWidget_2)
+        self.verticalLayout_4.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4.setSpacing(6)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.credits = QtWidgets.QLabel(self.verticalWidget_2)
+        self.credits.setStyleSheet("font: italic 10pt \"Droid Sans Fallback\";")
+        self.credits.setObjectName("credits")
+        self.verticalLayout_4.addWidget(self.credits)
+        self.label_5 = QtWidgets.QLabel(self.verticalWidget_2)
+        self.label_5.setStyleSheet("font: italic 10pt \"Droid Sans Fallback\";\n"
+"")
+        self.label_5.setObjectName("label_5")
+        self.verticalLayout_4.addWidget(self.label_5)
         LoginWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(LoginWindow)
@@ -97,6 +114,8 @@ class Ui_LoginWindow(object):
         self.label_3.setText(_translate("LoginWindow", "Пароль"))
         self.register_btn.setText(_translate("LoginWindow", "Регистрация"))
         self.log_in_btn.setText(_translate("LoginWindow", "Войти"))
+        self.credits.setText(_translate("LoginWindow", "v. 0.0.1"))
+        self.label_5.setText(_translate("LoginWindow", "made by CXDER"))
 
 
 if __name__ == "__main__":

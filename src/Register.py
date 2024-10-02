@@ -36,28 +36,30 @@ class Ui_RegisterWindow(object):
         self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName("label_2")
         self.verticalLayout_2.addWidget(self.label_2)
-        self.lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit.setStyleSheet("border:none;\n"
+        self.login_line = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.login_line.setStyleSheet("border:none;\n"
 "background-color: rgb(70, 113, 213);")
-        self.lineEdit.setObjectName("lineEdit")
-        self.verticalLayout_2.addWidget(self.lineEdit)
+        self.login_line.setObjectName("login_line")
+        self.verticalLayout_2.addWidget(self.login_line)
         self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_2.addWidget(self.label_3)
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_2.setStyleSheet("border:none;\n"
+        self.passwd_line = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.passwd_line.setStyleSheet("border:none;\n"
 "background-color: rgb(70, 113, 213);\n"
 "")
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.verticalLayout_2.addWidget(self.lineEdit_2)
+        self.passwd_line.setObjectName("passwd_line")
+        self.passwd_line.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.verticalLayout_2.addWidget(self.passwd_line)
         self.label_4 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_4.setObjectName("label_4")
         self.verticalLayout_2.addWidget(self.label_4)
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_3.setStyleSheet("border:none;\n"
+        self.passwd2_line = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.passwd2_line.setStyleSheet("border:none;\n"
 "background-color: rgb(70, 113, 213);")
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.verticalLayout_2.addWidget(self.lineEdit_3)
+        self.passwd2_line.setObjectName("passwd2_line")
+        self.passwd2_line.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.verticalLayout_2.addWidget(self.passwd2_line)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.register_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
@@ -82,6 +84,23 @@ class Ui_RegisterWindow(object):
         self.horizontalLayout.addWidget(self.log_in_btn)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.verticalLayout.addLayout(self.verticalLayout_2)
+        self.verticalWidget_2 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalWidget_2.setGeometry(QtCore.QRect(520, 410, 111, 54))
+        self.verticalWidget_2.setObjectName("verticalWidget_2")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.verticalWidget_2)
+        self.verticalLayout_4.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4.setSpacing(6)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.credits = QtWidgets.QLabel(self.verticalWidget_2)
+        self.credits.setStyleSheet("font: italic 10pt \"Droid Sans Fallback\";")
+        self.credits.setObjectName("credits")
+        self.verticalLayout_4.addWidget(self.credits)
+        self.label_6 = QtWidgets.QLabel(self.verticalWidget_2)
+        self.label_6.setStyleSheet("font: italic 10pt \"Droid Sans Fallback\";\n"
+"")
+        self.label_6.setObjectName("label_6")
+        self.verticalLayout_4.addWidget(self.label_6)
         RegisterWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(RegisterWindow)
@@ -96,6 +115,8 @@ class Ui_RegisterWindow(object):
         self.label_4.setText(_translate("RegisterWindow", "Повтор пароля"))
         self.register_btn.setText(_translate("RegisterWindow", "Регистрация"))
         self.log_in_btn.setText(_translate("RegisterWindow", "Войти"))
+        self.credits.setText(_translate("RegisterWindow", "v. 0.0.1"))
+        self.label_6.setText(_translate("RegisterWindow", "made by CXDER"))
 
 
 if __name__ == "__main__":
