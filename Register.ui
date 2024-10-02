@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LoginWindow</class>
- <widget class="QMainWindow" name="LoginWindow">
+ <class>RegisterWindow</class>
+ <widget class="QMainWindow" name="RegisterWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>642</width>
+    <width>640</width>
     <height>480</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="windowTitle">
-   <string>Авторизация</string>
+   <string>Регистрация</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(6, 38, 111);
@@ -25,35 +19,31 @@ font: 14pt &quot;DejaVu Serif&quot;;
 color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>100</y>
-      <width>391</width>
-      <height>261</height>
+      <x>150</x>
+      <y>130</y>
+      <width>351</width>
+      <height>260</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label">
        <property name="styleSheet">
-        <string notr="true">text-align: center;
-font: 16pt &quot;DejaVu Serif&quot;;</string>
+        <string notr="true">font: 16pt &quot;DejaVu Serif&quot;;</string>
        </property>
        <property name="text">
-        <string>Авторизация</string>
+        <string>Регистрация</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <property name="setAlignment" stdset="0">
-        <string/>
-       </property>
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
@@ -62,16 +52,10 @@ font: 16pt &quot;DejaVu Serif&quot;;</string>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="line_login">
+        <widget class="QLineEdit" name="lineEdit">
          <property name="styleSheet">
           <string notr="true">border:none;
 background-color: rgb(70, 113, 213);</string>
-         </property>
-         <property name="maxLength">
-          <number>20</number>
-         </property>
-         <property name="placeholderText">
-          <string/>
          </property>
         </widget>
        </item>
@@ -83,54 +67,64 @@ background-color: rgb(70, 113, 213);</string>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="line_password">
+        <widget class="QLineEdit" name="lineEdit_2">
          <property name="styleSheet">
-          <string notr="true">border: none;
+          <string notr="true">border:none;
+background-color: rgb(70, 113, 213);
+</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Повтор пароля</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_3">
+         <property name="styleSheet">
+          <string notr="true">border:none;
 background-color: rgb(70, 113, 213);</string>
          </property>
-         <property name="maxLength">
-          <number>20</number>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
         </widget>
        </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="register_btn">
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="register_btn">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
     background-color: rgb(42, 68, 128);
     color: white;
 }
 QPushButton:hover {
     background-color: rgb(18, 64, 171);
 }</string>
-         </property>
-         <property name="text">
-          <string>Регистрация</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="log_in_btn">
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
+           </property>
+           <property name="text">
+            <string>Регистрация</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="log_in_btn">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
     background-color: rgb(42, 68, 128);
     color: white;
 }
 QPushButton:hover {
     background-color: rgb(18, 64, 171);
 }</string>
-         </property>
-         <property name="text">
-          <string>Войти</string>
-         </property>
-        </widget>
+           </property>
+           <property name="text">
+            <string>Войти</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
