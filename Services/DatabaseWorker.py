@@ -102,7 +102,6 @@ class Database:
                 cur = conn.cursor()
                 cur.execute("""SELECT * FROM passwords WHERE owner_id=? AND service=?""", (id, service))
                 res = cur.fetchone()
-                print(res[3])
                 if res:
                     crypter = Crypter()
                     return crypter.decrypt(self.__key, res[3])

@@ -35,4 +35,4 @@ class MainWindow(QMainWindow):
             self.login_window.reset()
         if index == 2:
             self.manager_window.init_user()
-            self.manager_window.update_list() # Таким образом при смене индекса окна должен обновляться список паролей и сервисов под текущего пользователя
+            # self.manager_window.update_password_list() # Таким образом при смене индекса окна должен обновляться список паролей и сервисов под текущего пользователя

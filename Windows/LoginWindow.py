@@ -24,7 +24,7 @@ class LoginWindow(QMainWindow):
         login = self.ui.line_login.text()
         password = self.ui.line_password.text()
         res = self.db.authenticate(login, password)
-        if res: print(res)
-        else: print("Error")
+        # if res: print(res)
+        # else: print("Error")
         self.set_user(User(res[0], res[1])) # Установка пользователя
         self.stacked_widget.setCurrentIndex(2) # Смена окна

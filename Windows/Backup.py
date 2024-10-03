@@ -17,54 +17,38 @@ class ManagerWindow(QMainWindow):
         self.ui.passArea.setWidget(self.scroll_content_widget)
         self.scroll_layout.setAlignment(Qt.AlignTop)
 
-        # Инициализация внеш. зависимостей
+        # Инициализация внеш. зависимостей: подтягивается база данных из точки запуска, главная и единственная, а также методы для авторизации пользователей
         self.db = db
         self.set_user = set_user
         self.get_user = get_user
-        self.user = User()  # Пустой пользователь
+        self.user = User() # пустой пользователь, так надо.
         self.ui.logout_btn.clicked.connect(self.logout)
         self.ui.add_password_btn.clicked.connect(self.add_password)
-
-        # Первоначальное отображение списка паролей
-        # self.update_password_list()
+        self.password_list = []
+        self.row_count = len(self.user.get_passwords_list(self.db))
+        self.print_list()
 
     def clear_password_list(self):
         '''Очищает список паролей в scroll_layout'''
-        while self.scroll_layout.count() > 0:  # Очистка всех элементов
-            item = self.scroll_layout.itemAt(0)
+        for i in reversed(range(self.scroll_layout.count())):  # Очистка
+            item = self.scroll_layout.itemAt(i)
             if item.widget():
                 item.widget().deleteLater()
-            else:
-                self.scroll_layout.removeItem(item)
-
-    def reset_scroll_area(self):
-        '''Удаляет и пересоздает scroll_content_widget с новым layout'''
-        # Удаляем текущий scroll_content_widget, если он существует
-        if self.scroll_content_widget is not None:
-            self.scroll_content_widget.deleteLater()
-
-        # Создаем новый виджет и layout для прокрутки
-        self.scroll_content_widget = QWidget()
-        self.scroll_layout = QVBoxLayout(self.scroll_content_widget)
-        self.scroll_layout.setAlignment(Qt.AlignTop)
-
-        # Задаем новый виджет в QScrollArea
-        self.ui.passArea.setWidget(self.scroll_content_widget)
 
     def logout(self):
         '''Выход из учётной записи'''
         self.set_user(None)
-        self.clear_password_list()  # Очищаем список паролей
+        # self.init_user()
         self.ui.password_line.setText("")
         self.ui.service_line.setText("")
+        self.clear_password_list()
         self.stacked_widget.setCurrentIndex(0)
 
-    def update_password_list(self):
-        '''Обновляет и отображает список паролей для текущего пользователя'''
-        self.reset_scroll_area()
-        self.password_list = self.user.get_passwords_list(self.db)  # Получить пароли текущего пользователя
+
+    def print_list(self): #TODO: Тяжко. Нужно написать полное отображение списка сервис + пароль текущего пользователя. Тяжко будет ui красиво сделать...
+        self.clear_password_list()
+        self.password_list = self.user.get_passwords_list(self.db)
         for line in self.password_list:
-            print(line)
             service = line[2]
             password = self.user.get_password(self.db, service)
 
@@ -83,25 +67,28 @@ class ManagerWindow(QMainWindow):
             show_password_btn.clicked.connect(lambda _, p=password_field: self.toggle_password_display(p))
             row_layout.addWidget(show_password_btn)
 
+            # self.ui.verticalLayout.addLayout(row_layout)
             self.scroll_layout.addLayout(row_layout)
 
+
     def toggle_password_display(self, password_field):
-        '''Функция, переключающая отображение пароля по нажатию'''
+        '''Функция, переключающая отображение парооля по нажатию'''
         if password_field.echoMode() == QLineEdit.Password:
             password_field.setEchoMode(QLineEdit.Normal)
         else:
             password_field.setEchoMode(QLineEdit.Password)
 
+
     def add_password(self):
         '''Добавляет пароль в базу данных из графического интерфейса'''
-        service = self.ui.service_line.text()
-        password = self.ui.password_line.text()
-        self.db.add_password(self.user.get_id(), service, password)
+        print("list:", self.user.get_passwords_list(self.db))
+        self.row_count = len(self.user.get_passwords_list(self.db))
+        self.db.add_password(self.user.get_id(), self.ui.service_line.text(), self.ui.password_line.text())
+        print(self.row_count)
         self.ui.password_line.setText("")
         self.ui.service_line.setText("")
-        self.update_password_list()  # Обновляем список паролей после добавления
+        self.print_list()
+
 
     def init_user(self):
-        '''Инициализация текущего пользователя'''
         self.user = self.get_user()
-        self.update_password_list()  # Обновляем список паролей при входе
