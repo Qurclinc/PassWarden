@@ -119,4 +119,4 @@ class Database:
                 if res: return res
         except Exception as ex:
             return ["Execption"]
-        return ["None"]
+        return []

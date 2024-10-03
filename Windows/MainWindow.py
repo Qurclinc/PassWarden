@@ -12,7 +12,7 @@ class MainWindow(QMainWindow):
         self.stacked_widget = QStackedWidget() # Стек виджетов - чтобы между окнами можно было переключаться без резких скачков
         self.register_window = RegisterWindow(self.stacked_widget, self.db)
         self.login_window = LoginWindow(self.stacked_widget, self.db, self.set_user) # Чтобы пользователь везде сохранялся и ставился правильно - передаем метод
-        self.manager_window = ManagerWindow(self.stacked_widget, self.db, self.get_user) # Аналогично и для того, чтобы получать текущего пользователя
+        self.manager_window = ManagerWindow(self.stacked_widget, self.db, self.set_user, self.get_user) # Аналогично и для того, чтобы получать текущего пользователя
 
         self.stacked_widget.currentChanged.connect(self.indexChanged) # Если меняется окно - выполняется это событие и метод. Передается индекс окна на которое переключились
 
@@ -31,5 +31,8 @@ class MainWindow(QMainWindow):
         return self.user
     
     def indexChanged(self, index):
+        if index == 0:
+            self.login_window.reset()
         if index == 2:
+            self.manager_window.init_user()
             self.manager_window.update_list() # Таким образом при смене индекса окна должен обновляться список паролей и сервисов под текущего пользователя

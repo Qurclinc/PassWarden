@@ -13,6 +13,10 @@ class LoginWindow(QMainWindow):
         self.ui.register_btn.clicked.connect(self.register_window)
         self.ui.log_in_btn.clicked.connect(self.log_in)
 
+    def reset(self):
+        self.ui.line_login.setText("")
+        self.ui.line_password.setText("")
+
     def register_window(self):
         self.stacked_widget.setCurrentIndex(1)
 
